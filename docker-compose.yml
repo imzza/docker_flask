@@ -1,0 +1,37 @@
+version: '3'
+services:
+  flask:
+    build: .
+    container_name: pytapp
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./src:/code
+    environment:
+      FLASK_ENV: development
+
+    networks:
+      - flask_app
+
+
+  web:
+    image: nginx:alpine
+    ports:
+    - "80:80"
+    - "443:443"
+    volumes:
+      - ./:/var/www/html
+      - ./nginx/app.conf:/etc/nginx/default.conf
+
+    depends_on:
+        - flask
+    networks:
+      - flask_app
+
+
+  redis:
+    image: "redis:alpine"
+    networks:
+      - flask_app
+networks:
+  flask_app:

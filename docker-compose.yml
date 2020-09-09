@@ -13,21 +13,20 @@ services:
     networks:
       - flask_app
 
-
   web:
     image: nginx:alpine
+    container_name: flask_web_app
     ports:
     - "80:80"
     - "443:443"
     volumes:
       - ./:/var/www/html
-      - ./nginx/app.conf:/etc/nginx/default.conf
+      - ./nginx/app.conf:/etc/nginx/conf.d/default.conf
 
     depends_on:
         - flask
     networks:
       - flask_app
-
 
   redis:
     image: "redis:alpine"

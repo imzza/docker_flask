@@ -20,9 +20,9 @@ services:
     - "80:80"
     - "443:443"
     volumes:
-      - ./:/var/www/html
+#      - ./:/var/www/html
+      - ./ssl:/etc/ssl/
       - ./nginx/app.conf:/etc/nginx/conf.d/default.conf
-
     depends_on:
         - flask
     networks:

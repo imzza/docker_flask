@@ -7,4 +7,9 @@ COPY ./src/requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 EXPOSE 5000
 COPY ./src .
-CMD ["uwsgi", "--ini", "app.ini"]
+
+#Production Setup
+#CMD ["uwsgi", "--ini", "app.ini"]
+#Dev EnvironmentSetups
+#CMD ["flask", "run"]
+CMD ["python", "app.py"]

@@ -9,7 +9,7 @@ EXPOSE 5000
 COPY ./src .
 
 #Production Setup
-#CMD ["uwsgi", "--ini", "app.ini"]
+# CMD ["uwsgi", "--ini", "app.ini"]
 #Dev EnvironmentSetups
 #CMD ["flask", "run"]
 CMD ["python", "app.py"]
